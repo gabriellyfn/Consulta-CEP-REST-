@@ -1,8 +1,8 @@
-# 📍 Consulta de CEP com Spring Boot
+# 📍 Consulta de CEP em Java
 
-Aplicação desenvolvida em **Java** que consome a API pública ViaCEP para retornar automaticamente os dados completos de um endereço a partir do CEP informado.
+Aplicação desenvolvida em Java que consome a API pública ViaCEP para retornar automaticamente os dados completos de um endereço a partir do CEP informado.
 
-Este projeto demonstra consumo de API externa, tratamento de exceções e conversão de JSON para objeto Java.
+O projeto demonstra consumo de API externa, tratamento de exceções personalizadas e conversão de JSON para objeto Java.
 
 ---
 
@@ -19,10 +19,9 @@ Este projeto demonstra consumo de API externa, tratamento de exceções e conver
 ## 🛠️ Tecnologias Utilizadas
 
 - Java 17+
-- Spring Boot
+- Maven
 - Apache HttpClient (`org.apache.http.client.fluent.Request`)
 - Gson
-- Maven
 - API pública: ViaCEP
 
 ---
@@ -31,24 +30,20 @@ Este projeto demonstra consumo de API externa, tratamento de exceções e conver
 
 A classe `ViaCEPClient`:
 
-1. Monta dinamicamente a URL da API  
-2. Realiza uma requisição HTTP GET  
-3. Define timeout de conexão e socket (10 segundos)  
-4. Verifica se o retorno contém `"erro": true`  
-5. Lança exceção customizada (`CEPNotFoundExcept`) caso o CEP não exista  
-6. Converte o JSON retornado para o objeto `Endereco`  
+- Monta dinamicamente a URL da API  
+- Realiza uma requisição HTTP GET  
+- Define timeout de conexão e socket (10 segundos)  
+- Verifica se o retorno contém `"erro": true`  
+- Lança exceção customizada (`CEPNotFoundExcept`) caso o CEP não exista  
+- Converte o JSON retornado para o objeto `Endereco`  
 
 ---
 
 ## 🔎 Exemplo de Uso
 
-### Requisição:
-GET /cep/01001000
-
 ### Consulta realizada:
 
 https://viacep.com.br/ws/01001000/json
-
 
 ### Resposta:
 
@@ -62,7 +57,7 @@ https://viacep.com.br/ws/01001000/json
 }
 ```
 
-### ⚠️ Tratamento de Erros
+## ⚠️ Tratamento de Erros
 
 📌 CEP inexistente
 ```json
@@ -78,22 +73,38 @@ throw new IOException("Erro de I/O: ...");
 }
 ```
 
-### ▶️ Como Executar o Projeto
-
+## ▶️ Como Executar o Projeto
 
 1️⃣ Clone o repositório:
+```json
+{
 git clone https://github.com/seu-usuario/seu-repositorio.git
+}
+```
 
 2️⃣ Acesse a pasta do projeto:
+```json
+{
 cd seu-repositorio
+}
+```
 
-3️⃣ Execute a aplicação:
-mvn spring-boot:run
+3️⃣ Compile o projeto:
+```json
+{
+mvn clean install
+}
+```
 
-4️⃣ Acesse no navegador ou Postman:
-http://localhost:8080/cep/{cep}
+4️⃣ Execute a classe principal pela sua IDE
+ou via terminal (caso tenha classe com main):
+```json
+{
+java NomeDaClassePrincipal
+}
+```
 
-### 📚 Conceitos Aplicados
+## 📚 Conceitos Aplicados
 
 Consumo de API REST
 
@@ -105,8 +116,8 @@ Timeout de requisição HTTP
 
 Conversão JSON → Objeto (DTO)
 
-Arquitetura em camadas
-
 ---
 
-Autor: Gabrielly F. Nascimento
+👩‍💻 Autora Gabrielly F. Nascimento
+
+
